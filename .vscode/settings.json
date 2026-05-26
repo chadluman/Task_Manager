@@ -5,6 +5,5 @@
   "files.exclude": {
     "**/.DS_Store": true,
     "**/Thumbs.db": true
-  },
-  "liveServer.settings.root": "/src"
+  }
 }

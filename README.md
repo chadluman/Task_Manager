@@ -1,31 +1,17 @@
-# MoveLedger VS Code Project
+# Task Manager
 
-Clean VS Code-ready packaging of the MoveLedger MVP.
+A standalone static task manager app mirrored from:
 
-## Folder structure
+https://chadluman.com/apps/task-manager/index.html
 
-- `src/` app files
-- `.vscode/` workspace settings and task
+## Files
+
+- `index.html` app markup
+- `style.css` app styles
+- `script.js` app behavior
 - `server.js` tiny local static server
-- `package.json` simple run scripts
 
-## Open in VS Code
-
-Open this folder in VS Code:
-
-
-
-You can also open the workspace file:
-
-`moveledger-vscode-ready.code-workspace`
-
-## Run locally
-
-### Option 1: VS Code task
-
-Run the `Start MoveLedger` task.
-
-### Option 2: terminal
+## Run
 
 ```bash
 npm run start
@@ -34,14 +20,3 @@ npm run start
 Then open:
 
 [http://localhost:5500](http://localhost:5500)
-
-## Demo login
-
-- `demo@moveledger.app`
-- `demo1234`
-
-## Notes
-
-- This is still a browser-storage MVP.
-- The optional OpenAI key field stores the key locally in the browser for demo purposes only.
-- A production version should move auth, file storage, and AI calls to a backend.

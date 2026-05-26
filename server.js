@@ -3,7 +3,7 @@ const fs = require("fs");
 const path = require("path");
 
 const PORT = process.env.PORT || 5500;
-const SRC_DIR = path.join(__dirname, "src");
+const SRC_DIR = __dirname;
 
 const MIME_TYPES = {
   ".html": "text/html; charset=UTF-8",
@@ -18,7 +18,8 @@ const MIME_TYPES = {
 };
 
 const server = http.createServer((request, response) => {
-  const requestPath = request.url === "/" ? "/index.html" : request.url;
+  const requestUrl = new URL(request.url, `http://localhost:${PORT}`);
+  const requestPath = requestUrl.pathname === "/" ? "/index.html" : requestUrl.pathname;
   const safePath = path.normalize(requestPath).replace(/^(\.\.[/\\])+/, "");
   const filePath = path.join(SRC_DIR, safePath);
 
@@ -44,5 +45,5 @@ const server = http.createServer((request, response) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`MoveLedger MVP running at http://localhost:${PORT}`);
+  console.log(`Task Manager running at http://localhost:${PORT}`);
 });

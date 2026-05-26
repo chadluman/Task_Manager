@@ -2,7 +2,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Start MoveLedger",
+      "label": "Start Task Manager",
       "type": "shell",
       "command": "npm run start",
       "options": {

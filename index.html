@@ -7,22 +7,117 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="container">
-      <h1>Task Manager</h1>
-      <p id="task-count">0 tasks remaining</p>
+    <main class="app-shell">
+      <section class="hero-panel">
+        <div class="brand-row">
+          <div class="mark">TM</div>
+          <div>
+            <p class="eyebrow">Mission Control</p>
+            <h1>Task Manager</h1>
+          </div>
+        </div>
 
-      <div class="input-row">
-        <input type="text" id="task-input" placeholder="Enter a task..." />
-        <button onclick="addTask()">Add Task</button>
-      </div>
+        <p class="lede">
+          Turn loose ideas into a clean execution board with priorities,
+          subtasks, deadlines, and a little visual momentum.
+        </p>
 
-      <ul id="task-list"></ul>
-    </div>
+        <form id="task-form" class="task-form">
+          <label class="field task-title-field">
+            <span>Task</span>
+            <input
+              type="text"
+              id="task-input"
+              placeholder="Name the next useful thing..."
+              autocomplete="off"
+              required
+            />
+          </label>
 
-    <div class="container completed-container">
-      <h2>Completed Tasks</h2>
-      <ul id="completed-task-list"></ul>
-    </div>
+          <label class="field">
+            <span>Priority</span>
+            <select id="priority-input">
+              <option value="high">High</option>
+              <option value="medium" selected>Medium</option>
+              <option value="low">Low</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Due</span>
+            <input type="date" id="due-input" />
+          </label>
+
+          <button type="submit" class="primary-button">Add Task</button>
+        </form>
+
+        <div class="quick-actions">
+          <button type="button" data-template="Polish portfolio case study" data-priority="high">Portfolio polish</button>
+          <button type="button" data-template="Review project README" data-priority="medium">README review</button>
+          <button type="button" data-template="Plan next feature" data-priority="low">Plan feature</button>
+        </div>
+      </section>
+
+      <section class="dashboard-grid">
+        <aside class="stats-panel panel">
+          <p class="eyebrow">Progress</p>
+          <div class="progress-ring" aria-label="Task completion progress">
+            <svg viewBox="0 0 120 120" role="presentation">
+              <circle class="ring-track" cx="60" cy="60" r="50"></circle>
+              <circle class="ring-fill" id="progress-ring" cx="60" cy="60" r="50"></circle>
+            </svg>
+            <div>
+              <strong id="progress-percent">0%</strong>
+              <span>complete</span>
+            </div>
+          </div>
+
+          <div class="stat-stack">
+            <div class="stat-card">
+              <span>Active</span>
+              <strong id="active-count">0</strong>
+            </div>
+            <div class="stat-card">
+              <span>Done</span>
+              <strong id="done-count">0</strong>
+            </div>
+            <div class="stat-card">
+              <span>Subtasks</span>
+              <strong id="subtask-count">0</strong>
+            </div>
+          </div>
+
+          <div class="focus-card">
+            <span>Current focus</span>
+            <strong id="focus-task">Add your first task</strong>
+          </div>
+        </aside>
+
+        <section class="board-panel panel">
+          <div class="board-header">
+            <div>
+              <p class="eyebrow">Board</p>
+              <h2>Today&apos;s Work</h2>
+            </div>
+            <div class="filters" role="tablist" aria-label="Task filters">
+              <button type="button" class="filter active" data-filter="active">Active</button>
+              <button type="button" class="filter" data-filter="completed">Completed</button>
+              <button type="button" class="filter" data-filter="all">All</button>
+            </div>
+          </div>
+
+          <div id="task-list" class="task-list"></div>
+        </section>
+      </section>
+    </main>
+
+    <template id="empty-template">
+      <article class="empty-state">
+        <div class="empty-icon">+</div>
+        <h3>No tasks in this view.</h3>
+        <p>Add a task or switch filters. This board is ready when you are.</p>
+      </article>
+    </template>
 
     <script src="script.js"></script>
   </body>
