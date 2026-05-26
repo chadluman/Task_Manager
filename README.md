@@ -13,7 +13,7 @@ Clean VS Code-ready packaging of the MoveLedger MVP.
 
 Open this folder in VS Code:
 
-`C:\Users\Luman\OneDrive\Desktop\hot air balloon\packing and logging app\moveledger-vscode-ready`
+
 
 You can also open the workspace file:
 
