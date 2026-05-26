@@ -1,0 +1,144 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #1a1a2e;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 16px;
+  min-height: 100vh;
+}
+
+.container {
+  background-color: #16213e;
+  padding: 32px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 480px;
+  margin-bottom: 20px;
+}
+
+.completed-container {
+  background-color: #16213e;
+}
+
+.completed-container h2 {
+  color: #e2e8f0;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.completed-task {
+  opacity: 0.8;
+}
+
+
+h1 {
+  color: #e2e8f0;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+#task-count {
+  color: #94a3b8;
+  margin-bottom: 20px;
+}
+
+.input-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  background: #0f172a;
+  color: white;
+}
+
+button {
+  background: #3b82f6;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+
+.task-item {
+  color: white;
+  background: #0f172a;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+}
+
+.task-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+.subtask-list {
+  margin-top: 10px;
+  margin-left: 20px;
+  padding-left: 10px;
+  border-left: 2px solid #3b82f6;
+}
+
+.subtask-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1e293b;
+  padding: 8px;
+  margin-bottom: 5px;
+  border-radius: 6px;
+  font-size: 0.9em;
+  cursor: move;
+  transition: background-color 0.2s;
+}
+
+.subtask-item:hover {
+  background: #334155;
+}
+
+.subtask-item.dragging {
+  opacity: 0.5;
+  transform: rotate(5deg);
+}
+
+.subtask-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+.subtask-buttons button {
+  padding: 4px 8px;
+  font-size: 0.8em;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.h2 {
+  color: #e2e8f0;
+
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
