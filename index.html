@@ -7,8 +7,74 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <main class="app-shell">
+    <section id="auth-screen" class="auth-screen">
+      <div class="auth-card">
+        <div class="auth-brand">
+          <div class="mark">TM</div>
+          <div>
+            <p class="eyebrow">Mission Control</p>
+            <h1>Welcome aboard.</h1>
+          </div>
+        </div>
+        <p class="auth-copy">
+          Sign in to coordinate work, share ownership, and keep a durable record
+          of what your team gets done.
+        </p>
+
+        <div class="auth-tabs" role="tablist" aria-label="Account options">
+          <button type="button" class="auth-tab active" data-auth-mode="login">Sign in</button>
+          <button type="button" class="auth-tab" data-auth-mode="register">Create account</button>
+        </div>
+
+        <form id="auth-form" class="auth-form">
+          <label class="field register-field hidden">
+            <span>Name</span>
+            <input id="auth-name" type="text" autocomplete="name" />
+          </label>
+
+          <label class="field">
+            <span>Email</span>
+            <input id="auth-email" type="email" autocomplete="email" required />
+          </label>
+
+          <label class="field">
+            <span>Password</span>
+            <input id="auth-password" type="password" autocomplete="current-password" minlength="8" required />
+          </label>
+
+          <div class="register-grid register-field hidden">
+            <label class="field">
+              <span>Role</span>
+              <select id="auth-role">
+                <option value="member">Member</option>
+                <option value="team-lead">Team lead</option>
+                <option value="manager">Manager</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Team</span>
+              <input id="auth-team" type="text" list="team-options" placeholder="Design, Product..." />
+              <datalist id="team-options"></datalist>
+            </label>
+          </div>
+
+          <p id="auth-message" class="form-message" role="alert"></p>
+          <button id="auth-submit" type="submit" class="primary-button">Sign in</button>
+        </form>
+      </div>
+    </section>
+
+    <main id="app-shell" class="app-shell hidden">
       <section class="hero-panel">
+        <div class="account-bar">
+          <div>
+            <span id="account-team" class="eyebrow"></span>
+            <strong id="account-name"></strong>
+            <span id="account-role" class="account-role"></span>
+          </div>
+          <button id="logout-button" type="button" class="secondary-button">Log out</button>
+        </div>
+
         <div class="brand-row">
           <div class="mark">TM</div>
           <div>
@@ -34,7 +100,7 @@
             />
           </label>
 
-          <label class="field">
+          <label class="field task-priority-field">
             <span>Priority</span>
             <select id="priority-input">
               <option value="high">High</option>
@@ -43,19 +109,27 @@
             </select>
           </label>
 
-          <label class="field">
+          <label class="field task-due-field">
             <span>Due</span>
             <input type="date" id="due-input" />
           </label>
 
-          <button type="submit" class="primary-button">Add Task</button>
-        </form>
+          <label class="field task-assignee-field">
+            <span>Assign user</span>
+            <select id="assignee-input">
+              <option value="">Unassigned</option>
+            </select>
+          </label>
 
-        <div class="quick-actions">
-          <button type="button" data-template="Polish portfolio case study" data-priority="high">Portfolio polish</button>
-          <button type="button" data-template="Review project README" data-priority="medium">README review</button>
-          <button type="button" data-template="Plan next feature" data-priority="low">Plan feature</button>
-        </div>
+          <label class="field task-team-field">
+            <span>Assign team</span>
+            <select id="team-input">
+              <option value="">No team</option>
+            </select>
+          </label>
+
+          <button type="submit" class="primary-button task-submit-button">Add Task</button>
+        </form>
       </section>
 
       <section class="dashboard-grid">
@@ -103,9 +177,11 @@
               <button type="button" class="filter active" data-filter="active">Active</button>
               <button type="button" class="filter" data-filter="completed">Completed</button>
               <button type="button" class="filter" data-filter="all">All</button>
+              <button type="button" class="filter" data-filter="archived">Archive</button>
             </div>
           </div>
 
+          <p id="app-message" class="form-message" role="status"></p>
           <div id="task-list" class="task-list"></div>
         </section>
       </section>
@@ -119,6 +195,6 @@
       </article>
     </template>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=5"></script>
   </body>
 </html>

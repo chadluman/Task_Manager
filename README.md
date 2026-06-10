@@ -1,22 +1,48 @@
 # Task Manager
 
-A standalone static task manager app mirrored from:
+A collaborative task board backed by MongoDB. Users can:
 
-https://chadluman.com/apps/task-manager/index.html
+- Create accounts with a role and team
+- Assign tasks to individual users or entire teams
+- Track task and subtask progress
+- Review an audit history for each task
+- Archive tasks without losing their historical record
 
-## Files
+## Setup
 
-- `index.html` app markup
-- `style.css` app styles
-- `script.js` app behavior
-- `server.js` tiny local static server
+1. Install dependencies:
 
-## Run
+   ```bash
+   npm install
+   ```
 
-```bash
-npm run start
-```
+2. Copy `.env.example` to `.env` and set:
 
-Then open:
+   ```env
+   MONGODB_URI=mongodb://127.0.0.1:27017/task-manager
+   JWT_SECRET=replace-this-with-a-long-random-secret
+   PORT=5501
+   ```
 
-[http://localhost:5500](http://localhost:5500)
+   `MONGODB_URI` can also be a MongoDB Atlas connection string.
+
+3. Start the app:
+
+   ```bash
+   npm start
+   ```
+
+4. Open [http://localhost:5501](http://localhost:5501).
+
+Do not open the project with VS Code Live Server. Live Server only serves the
+frontend files and cannot handle the `/api` routes required for accounts and
+tasks. Local development requests from Live Server are supported as a fallback,
+but `npm start` remains the recommended way to run the complete app.
+
+## Data model
+
+- `User`: account, hashed password, role, and team
+- `Team`: shared team identity
+- `Task`: owner, user/team assignments, subtasks, completion state, and activity history
+
+Passwords are hashed with bcrypt. API sessions use seven-day JSON Web Tokens.

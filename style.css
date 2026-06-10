@@ -67,6 +67,100 @@ button {
   cursor: pointer;
 }
 
+.hidden {
+  display: none !important;
+}
+
+.auth-screen {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 24px;
+}
+
+.auth-card {
+  width: min(560px, 100%);
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  padding: clamp(24px, 5vw, 42px);
+  background: var(--panel-strong);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.48);
+  backdrop-filter: blur(20px);
+}
+
+.auth-brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.auth-brand h1 {
+  font-size: clamp(30px, 7vw, 48px);
+}
+
+.auth-copy {
+  margin: 24px 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.auth-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 22px;
+  padding: 6px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(247, 251, 255, 0.04);
+}
+
+.auth-tab,
+.secondary-button {
+  border: 1px solid transparent;
+  border-radius: 13px;
+  padding: 11px 14px;
+  color: var(--muted);
+  font-weight: 850;
+  background: transparent;
+}
+
+.auth-tab.active {
+  border-color: rgba(181, 72, 255, 0.48);
+  color: white;
+  background: rgba(155, 22, 241, 0.2);
+}
+
+.auth-form {
+  display: grid;
+  gap: 16px;
+}
+
+.register-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.form-message {
+  min-height: 20px;
+  margin: 0;
+  color: var(--rose);
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.form-message.success {
+  color: var(--green);
+}
+
+.primary-button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
 .app-shell {
   position: relative;
   z-index: 1;
@@ -104,6 +198,32 @@ button {
 
 .hero-panel > * {
   position: relative;
+}
+
+.account-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.account-bar > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.account-role {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.secondary-button {
+  border-color: var(--line);
+  color: var(--text);
+  background: rgba(247, 251, 255, 0.06);
 }
 
 .brand-row {
@@ -166,7 +286,7 @@ h2 {
 
 .task-form {
   display: grid;
-  grid-template-columns: minmax(220px, 1fr) 160px 170px auto;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 12px;
   align-items: end;
   padding: 10px;
@@ -177,11 +297,31 @@ h2 {
 
 .field {
   display: grid;
+  min-width: 0;
   gap: 8px;
+}
+
+.task-title-field {
+  grid-column: span 6;
+}
+
+.task-priority-field,
+.task-due-field {
+  grid-column: span 3;
+}
+
+.task-assignee-field,
+.task-team-field {
+  grid-column: span 5;
+}
+
+.task-submit-button {
+  grid-column: span 2;
 }
 
 input,
 select {
+  min-width: 0;
   width: 100%;
   border: 1px solid rgba(247, 251, 255, 0.1);
   border-radius: 16px;
@@ -199,6 +339,16 @@ select {
   appearance: none;
 }
 
+select option {
+  color: #111;
+  background: #fff;
+}
+
+#auth-role {
+  color: #111;
+  background: #fff;
+}
+
 input:focus,
 select:focus {
   border-color: rgba(181, 72, 255, 0.72);
@@ -206,7 +356,6 @@ select:focus {
 }
 
 .primary-button,
-.quick-actions button,
 .filter,
 .task-action,
 .subtask-add button {
@@ -222,14 +371,6 @@ select:focus {
   box-shadow: 0 14px 30px rgba(79, 7, 138, 0.45);
 }
 
-.quick-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 18px;
-}
-
-.quick-actions button,
 .filter {
   border: 1px solid var(--line);
   padding: 10px 13px;
@@ -242,7 +383,6 @@ select:focus {
     background 160ms ease;
 }
 
-.quick-actions button:hover,
 .filter:hover,
 .filter.active {
   transform: translateY(-1px);
@@ -462,6 +602,34 @@ select:focus {
   border-top: 1px solid var(--line);
 }
 
+.assignment-form {
+  display: grid;
+  grid-template-columns: minmax(150px, 1fr) minmax(150px, 1fr) auto;
+  gap: 10px;
+  align-items: end;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.assignment-form label {
+  display: grid;
+  gap: 6px;
+}
+
+.assignment-form label span {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.assignment-form select {
+  padding: 10px 12px;
+  border-radius: 13px;
+}
+
 .subtask-list {
   display: grid;
   gap: 8px;
@@ -521,6 +689,47 @@ select:focus {
   background: rgba(155, 22, 241, 0.24);
 }
 
+.history-panel {
+  margin-top: 14px;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+}
+
+.history-panel summary {
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.history-panel ul {
+  display: grid;
+  gap: 8px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.history-panel li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 8px;
+  border-radius: 12px;
+  padding: 9px 11px;
+  color: var(--muted);
+  font-size: 13px;
+  background: rgba(247, 251, 255, 0.04);
+}
+
+.history-panel strong {
+  color: var(--text);
+}
+
+.history-panel time {
+  color: var(--slate);
+  white-space: nowrap;
+}
+
 .empty-state {
   display: grid;
   min-height: 320px;
@@ -569,8 +778,18 @@ select:focus {
 
 @media (max-width: 980px) {
   .task-form,
-  .dashboard-grid {
+  .dashboard-grid,
+  .assignment-form {
     grid-template-columns: 1fr;
+  }
+
+  .task-title-field,
+  .task-priority-field,
+  .task-due-field,
+  .task-assignee-field,
+  .task-team-field,
+  .task-submit-button {
+    grid-column: auto;
   }
 
   .stats-panel {
@@ -584,6 +803,7 @@ select:focus {
   }
 
   .brand-row,
+  .account-bar,
   .board-header,
   .task-main {
     grid-template-columns: 1fr;
@@ -605,6 +825,11 @@ select:focus {
   }
 
   .subtask-add {
+    grid-template-columns: 1fr;
+  }
+
+  .register-grid,
+  .history-panel li {
     grid-template-columns: 1fr;
   }
 }
